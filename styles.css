@@ -29,3 +29,44 @@ body{background:radial-gradient(ellipse 70% 25% at 50% 0%,#392a101a,transparent)
 @media(max-width:640px){.site-header{height:76px}.brand-logo{width:42px;height:42px}.hero{padding-top:44px;gap:12px}.hero-visual{height:345px;margin-top:5px}.hero-logo{width:min(83%,300px);max-height:310px}.logo-arch{height:87%;width:76%}.hero-caption{bottom:0;font-size:16px}.hero h1{font-size:clamp(38px,10vw,50px)}.header-cta{min-height:42px}.btn{min-height:48px}.feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.feature-card{min-width:0}.vision-logo{width:180px}.download-panel{padding-inline:18px}}
 @media(max-width:360px){.brand-name{font-size:19px}.brand-name small{font-size:8px}.header-cta{font-size:10px;padding-inline:8px}.feature-grid{grid-template-columns:1fr}.hero-actions .btn{width:100%}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* Mobile overflow correction: keep all layout and decorative layers inside viewport. */
+html{width:100%;max-width:100%;overflow-x:clip}
+body{width:100%;max-width:100%;overflow-x:clip}
+body>*,main,section,header,footer{max-width:100%}
+.wrap{max-width:calc(100% - 32px)}
+.hero,.hero-copy,.hero-visual,.section-intro,.vision-inner,.vision-copy,.feature-grid,.roadmap-grid,.download-panel{min-width:0;max-width:100%}
+.hero h1,.hero-lead,.section h2,.vision-copy h2,.feature-card p,.road-card p{overflow-wrap:anywhere}
+.ambient{max-width:none;contain:paint}
+@media(max-width:900px){
+ .hero{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .vision-inner{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+}
+@media(max-width:640px){
+ .wrap{width:calc(100% - 32px);max-width:520px}
+ .site-header{flex-wrap:nowrap;gap:7px}
+ .brand{min-width:0;gap:6px}
+ .brand-name small{letter-spacing:0}
+ .header-cta{margin-right:auto;white-space:nowrap}
+ .hero{display:flex;flex-direction:column;width:100%;min-width:0}
+ .hero-visual{width:100%;overflow:hidden!important;isolation:isolate}
+ .hero-logo{max-width:100%;object-fit:contain}
+ .hero-actions{width:100%}
+ .hero-actions .btn{flex:1 1 145px;min-width:0;text-align:center}
+ .feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .feature-card{min-width:0}
+ .vision-inner{grid-template-columns:minmax(0,1fr)}
+ .vision-seal{overflow:hidden}
+ .roadmap-grid{grid-template-columns:minmax(0,1fr)}
+ .download-panel{width:100%}
+ .download-panel .btn{max-width:100%;min-width:0}
+ .verse-band{max-width:100%;overflow:hidden}
+}
+@media(max-width:390px){
+ .brand-logo{width:34px;height:34px}
+ .brand-name{font-size:19px}
+ .header-cta{font-size:10px;padding:6px 8px}
+ .menu-toggle{padding:5px 7px}
+ .feature-grid{grid-template-columns:minmax(0,1fr)}
+ .hero h1{font-size:clamp(32px,9vw,40px)}
+}
